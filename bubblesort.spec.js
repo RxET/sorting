@@ -1,4 +1,9 @@
 describe('Bubble Sort', function(){
+
+    beforeEach(function (){
+        spyOn(window, 'swapFunc').and.callThrough();
+    });
+
     it('handles an empty array', function(){
       expect( bubbleSort([]) ).toEqual( [] );
     });
@@ -12,13 +17,16 @@ describe('Bubble Sort', function(){
     })
 
     it("tracks the number of times swapFunc was called", function() {
-        spyOn(swapFunc);
-
+        // spyOn(window, 'swapFunc');
         expect(swapFunc.calls.count()).toEqual(0);
-    
-        bubbleSort([3,5,1,4,2]);
-    
-        expect(swapFunc.calls.count()).toEqual(6);
       });
+    
+    // beforeAll (function (){ 
+    it("calls swapFunk the correct number of times?", function (){
+        // spyOn(window, 'swapFunc');
+        bubbleSort([3,5,1,4,2]);
+        expect(swapFunc.calls.count()).toEqual(6);
+        });
+    // });
 
   });
